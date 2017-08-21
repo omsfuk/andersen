@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <!--<link rel="stylesheet" href="/css/waves.min.css" />-->
+    <!--<link rel="stylesheet" href="/css/font-awesome.min.css" />-->
+    <!--<link rel="stylesheet" href="/var/css/style.css"/>-->
+    <link rel="stylesheet" href="/css/super.css"/>
+</head>
+
+<body>
+<div id="menu">
+    <div class="menu-header">
+        <div class="user-info">
+            <div><img src="/img/portrait.jpg" class="user-portrait"/> </div>
+            <br/>
+            <div style="color:#FAFAFA"><b>OMSFUK</b></div>
+            <div style="color:#eeeeee">2441707419@qq.com</div>
+        </div>
+        <div id="menu-btn" class="waves-btn">
+            <i class="fa fa-bars fa-lg"></i>
+        </div>
+    </div>
+    <div class="menu-body">
+        <ul class="nav-list">
+            <li data-th-name="home"><a href="/"><i class="fa fa-home fa-lg"></i>主页</a></li>
+            <li data-th-name="archive"><a href="/archive"><i class="fa fa-archive fa-lg"></i>归档</a></li>
+            <li data-th-name="project"><a><i class="fa fa-cube fa-lg"></i>项目</a></li>
+            <li data-th-name="books"><a><i class="fa fa-book fa-lg"></i>书籍</a></li>
+            <li data-th-name="links"><a><i class="fa fa-link fa-lg"></i>友链</a></li>
+            <li data-th-name="about"><a><i class="fa fa-leaf fa-lg"></i>关于</a></li>
+            <li data-th-name="github"><a><i class="fa fa-github fa-lg"></i>Github</a></li>
+        </ul>
+    </div>
+</div>
+<div id="topNav"></div>
+<div id="returnBtn" class="fab"><i class="fa fa-chevron-up fa-lg"></i></div>
+
+<div id="body">
+    <div class="well">
+        <div class="search-input"><input id="search" placeholder="输入感兴趣的关键字"/></div>
+        <div class="top-btn">
+            <div id="search-btn" class="waves-btn"><i class="fa fa-search fa-lg"></i></div>
+            <div id="share-btn" class="waves-btn"><i class="fa fa-share-alt fa-lg"></i></div>
+        </div>
+        <div class="page-title" id="page-title">
+            <div layout:fragment="title" class="page-basictitle"></div>
+            <div layout:fragment="subtitle" class="page-subtitle"></div>
+        </div>
+    </div>
+    <div layout:fragment="content" id="content">
+
+    </div>
+
+    <div id="footer">
+        <div class="first-footer">
+            <div>站点访客数 : 18441&nbsp;&nbsp;·&nbsp;&nbsp;站点总访问量 : 54231</div>
+            <div>
+                <i class="fa fa-rss"></i>
+                博客内容遵循
+                <a style="color: #e8eaf6" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">
+                    知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议
+                </a>
+            </div>
+        </div>
+        <div class="second-footer">
+           OMSFUK  © 2017  Copied by Hexo Theme indigo
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="/js/jquery.min.js"></script>
+<script type="text/javascript" src="/js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="/js/waves.min.js"></script>
+<script type="text/javascript" src="/var/js/my.js"></script>
+<div layout:fragment="customScript"></div>
+</body>
+</html>
