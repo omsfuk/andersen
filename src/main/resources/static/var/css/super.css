@@ -174,32 +174,32 @@ body, input, div, span, img, h1, h2, h3, h4, h5, p {
     height: 80px;
     border-radius: 40px;
 }
-.nav-list {
+.nav {
     list-style: none;
     padding: 0;
     margin: 0;
 }
-.nav-list li {
+.nav li {
     padding: 0 20px 0;
     width: 200px;
     height: 44px;
     line-height: 44px;
 }
-.nav-list li:hover {
+.nav li:hover {
     cursor: pointer;
     background-color: #eeeeee;
 }
-.nav-list li a {
+.nav li a {
     display: inline-block;
     text-decoration: none;
     color: #616161;
     line-height: inherit;
     width: 200px;
 }
-.nav-list li .fa {
+.nav li .fa {
     padding: 0 35px 0 0;
 }
-.nav-list li .active {
+.nav li .active {
     background-color: #eeeeee;
 }
 #menu-btn {
@@ -210,7 +210,7 @@ body, input, div, span, img, h1, h2, h3, h4, h5, p {
     top: 0px;
     color: #e8eaf6;
 }
-#topNav {
+#fixed-title {
     position: fixed;
     text-align: center;
     background-color: #3f51b5;

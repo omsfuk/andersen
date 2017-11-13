@@ -1,34 +1,26 @@
 ::selection {
     background: #d7dbf0;
 }
-a {
-    text-decoration: none;
-}
-a:active {
-    text-decoration: none;
-}
-a:visited {
-    text-decoration: none;
-}
-html, body, div, span, img, h1, h2, h3, h4, h5, h6 {
-    position: relative;
-}
-html {
-    margin: 0px;
-    padding: 0px;
-    height: 100%;
-    background-color: #F5F5F5;
-}
-body {
-    margin: 0;
-    overflow-x: hidden;
-}
 @font-face {
     font-family: Roboto;
     src: url('Roboto-Regular.ttf');
 }
-body, input, div, span, img, h1, h2, h3, h4, h5, p {
+* {
+    position: relative;
     font-family: Roboto, "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", sans-serif;
+    margin: 0;
+    padding: 0;
+}
+html {
+    background-color: #F5F5F5;
+}
+body {
+    height: 100vh;
+    overflow-x: hidden;
+}
+a, a:visited, a:active {
+    text-decoration: none;
+    color: #616161;
 }
 @keyframes in-ani {
     from {
@@ -71,21 +63,21 @@ body, input, div, span, img, h1, h2, h3, h4, h5, p {
 
 @keyframes up-ani {
     from {
-        top: 0px;
+        top: 40px;
         opacity: 0;
     }
     to {
-        top: -40px;
+        top: 0px;
         opacity: 1;
     }
 }
 @keyframes down-ani {
     from {
-        top: -40px;
+        top: 0px;
         opacity: 1;
     }
     to {
-        top: 0px;
+        top: 40px;
         opacity: 0;
     }
 }
@@ -141,92 +133,127 @@ body, input, div, span, img, h1, h2, h3, h4, h5, p {
     -moz-animation-fill-mode : forwards;
     -webkit-animation-fill-mode : forwards;
 }
+@keyframes small-left-ani {
+    from {
+        left: 120px;
+    }
+    to {
+        left: 0px;
+    }
+}
+@keyframes small-right-ani {
+    from {
+        left: 0px;
+    }
+    to {
+        left: 120px;
+    }
+}
+.small-left {
+    animation: small-left-ani 500ms;
+    -moz-animation: small-left-ani 500ms;
+    -webkit-animation: small-left-ani 500ms;
+    -o-animation: small-left-ani 500ms;
+    animation-fill-mode: forwards;
+    -moz-animation-fill-mode : forwards;
+    -webkit-animation-fill-mode : forwards;
+}
+.small-right {
+    animation: small-right-ani 500ms;
+    -moz-animation: small-right-ani 500ms;
+    -webkit-animation: small-right-ani 500ms;
+    -o-animation: small-right-ani 500ms;
+    animation-fill-mode: forwards;
+    -moz-animation-fill-mode : forwards;
+    -webkit-animation-fill-mode : forwards;
+}
 
+/* 左侧菜单 */
 #menu {
-    padding:0;
-    margin:0;
+    display: flex;
+    flex-direction: column;
     position: fixed;
-    width: 240px;
     height: 100%;
+    width: 240px;
     background-color: white;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
     z-index: 1000;
-    transform:translateZ(0);
 }
-
 .menu-header {
-    top: 0;
-    left: 0;
     height: 140px;
     padding:40px 20px 2em;
     background-size: 240px 220px;
     background-image: url(/img/brand.jpg);
     background-repeat: no-repeat;
 }
-.user-info {
-    position: relative;
-}
-.user-portrait {
+.menu-header-portrait {
     width: 80px;
     height: 80px;
+    margin-bottom: 20px;
     border-radius: 40px;
-}
-.nav-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-.nav-list li {
-    padding: 0 20px 0;
-    width: 200px;
-    height: 44px;
-    line-height: 44px;
-}
-.nav-list li:hover {
-    cursor: pointer;
-    background-color: #eeeeee;
-}
-.nav-list li a {
-    display: inline-block;
-    text-decoration: none;
-    color: #616161;
-    line-height: inherit;
-    width: 200px;
-}
-.nav-list li .fa {
-    padding: 0 35px 0 0;
-}
-.nav-list li .active {
-    background-color: #eeeeee;
 }
 #menu-btn {
     position: absolute;
+    /*display: inline-block;*/
     right: -40px;
-    /*left: 240px;*/
-    /*bottom: 170px;*/
     top: 10px;
     color: #e8eaf6;
 }
-#topNav {
-    position: fixed;
-    text-align: center;
-    background-color: #3f51b5;
-    box-shadow:0 4px 10px rgba(0,0,0,0.16);
-    width: 100%;
-    height: 60px;
-    line-height: 60px;
-    z-index: 100;
-    color: white;
-    font-size: 1.2em;
-    transform:translateZ(0);
-    display: none;
+
+/* 导航栏 */
+.nav {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    list-style: none;
+}
+.nav>li {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    height: 44px;
+    line-height: 44px;
+}
+.nav>li>a {
+    padding: 0 20px 0;
+}
+.nav>li:hover {
+    cursor: pointer;
+    background-color: #eeeeee;
+}
+.nav>li i {
+    padding: 0 35px 0 0;
 }
 
 
-#body {
+/*顶部标题栏*/
+#fixed-title {
+    position: fixed;
     width: 100%;
+    height: 60px;
+    text-align: center;
+    background-color: #3f51b5;
+    box-shadow:0 4px 10px rgba(0,0,0,0.16);
+    line-height: 60px;
+    color: white;
+    font-size: 1.2em;
+    transform:translateZ(0);
+    opacity: 0;
+    z-index: 100;
+}
+
+
+/*全部内容,包括顶部导航*/
+#all {
+    display: flex;
     min-height: 100%;
+    flex-direction: column;
+    align-items: stretch;
     left: 120px;
+}
+
+#body {
+    flex-grow: 1;
 }
 .well {
     width: 100%;
@@ -249,8 +276,6 @@ body, input, div, span, img, h1, h2, h3, h4, h5, p {
     height: 40px;
     width: 300px;
     right: 104px;
-    padding:0;
-    margin: 0;
     display: inline-block;
     overflow: hidden;
     z-index: 200;
@@ -285,6 +310,8 @@ body, input, div, span, img, h1, h2, h3, h4, h5, p {
 .search-input input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     color: #e8eaf6;
 }
+
+/*页面标题区*/
 .page-title {
     width: 960px;
     margin: 0 auto;
@@ -292,48 +319,57 @@ body, input, div, span, img, h1, h2, h3, h4, h5, p {
     top: 110px;
     opacity: 0;
 }
+/*页面主标题*/
 .page-basictitle {
     font-size: 48px;
 }
+/*页面副标题*/
 .page-subtitle {
     font-size: 18px;
     color: #7986cb;
 }
 
-
+/*正文*/
 #content {
-    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 40px 0px 0px;
     width: 100%;
 }
 
+/*脚注*/
 #footer {
+    flex: 0 1 auto;
     width: 100%;
     text-align: center;
     color: #9fa8da;
     font-size: 13px;
 }
 
+/*一级脚注*/
 .first-footer {
     padding: 20px 0px 20px;
     background-color: #3151b5;
 }
-
 .first-footer div {
     padding: 3px 0;
 }
-
+/*二级脚注*/
 .second-footer {
     padding: 20px 0px 20px;
     background-color: #303f9f;
 }
-#returnBtn {
+
+/*返回顶部按钮*/
+#return-btn {
     position: fixed;
     bottom: 40px;
     right: -60px;
     transform:translateZ(0);
 }
 
+/*悬浮按钮基类*/
 .fab {
     width: 60px;
     height: 60px;
@@ -356,11 +392,10 @@ body, input, div, span, img, h1, h2, h3, h4, h5, p {
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
 }
 
-
+/*博客样式*/
 .post-tags {
-    maring: 0px;
     margin:0px -20px 0px;
-    padding:10px 20px 20px;
+    padding:10px 20px 15px;
     list-style: none;
     -moz-user-select: none;
     -khtml-user-select: none;
@@ -417,7 +452,7 @@ body, input, div, span, img, h1, h2, h3, h4, h5, p {
     color: #3b50ce;
 }
 .post-title a {
-    display: inline-block;
+    display: block;
     cursor: pointer;
 }
 .post-meta {
@@ -426,25 +461,24 @@ body, input, div, span, img, h1, h2, h3, h4, h5, p {
 }
 
 .page-btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     text-align: center;
-
+    padding-bottom: 40px;
 }
-.page-btns .page-btn {
-    display: inline-block;
-    text-align: center;
+.page-btn {
     width: 35px;
     height: 35px;
     line-height: 35px;
-    border-radius: 5px;
+    border-radius: 4px;
     background-color: transparent;
     -moz-transition: background-color 0.2s ease-in;
     -webkit-transition: background-color 0.2s ease-in;
     -o-transition: background-color 0.2s ease-in;
 }
-.page-btns .next-btn {
+.next-btn {
     width: 70px;
-    height: 35px;
-    line-height: 35px;
 }
 .page-btns .page-btn:hover {
     cursor: pointer;

@@ -5,18 +5,22 @@
       layout:decorator="layout">
 <head>
     <style>
-        .nav-list li[name='home'] {
+        .nav li[name='home'] {
             background-color: #eeeeee;
         }
         .post-list>li {
             margin-bottom: 30px;
         }
         #posts {
-            opacity: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            list-style: none;
+            width: inherit;
+            position: relative;
         }
         .post {
             width: 920px;
-            margin:0 auto;
             padding: 16px 20px 0px;
             box-shadow: 0 1px 2px rgba(151,151,151,0.58);
             background-color: white;
@@ -27,182 +31,32 @@
             padding-bottom: 20px;
             line-height: 1.8
         }
-        .post-list {
-            list-style: none;
-            margin: 0 auto;
-            padding: 40px 0px 0px;
-            width: inherit;
-            position: relative;
-            opacity: 0;
-        }
     </style>
     <title>OMSFUKの技术博客</title>
 </head>
 <div layout:fragment="title">OMSFUKの技术博客</div>
 <div layout:fragment="subtitle">Elegant Code</div>
 <div layout:fragment="content">
-    <ul class="post-list up-down-ani-area" id="posts">
-        <li class="post">
+    <ul class="post-list up-down-ani-area" id="posts" style="top: 40px; opacity: 0">
+        <li class="post" th:each="post : ${page.content}">
             <div class="post-meta">
-                <span style="color: #757575">2017-08-08</span>
+                <span style="color: #757575" th:text="${#dates.format(post.date, 'yyyy-MM-dd')}"></span>
                 &nbsp;&nbsp;·&nbsp;&nbsp;
-                <span style="color: #ba68c8">linux</span>
+                <span style="color: #ba68c8" th:text="${post.category}"></span>
             </div>
-            <div class="post-title"><a>教你使用asciinema录制命令行操作</a></div>
-            <div class="post-content">
-                asciinema 是一个在终端下非常棒的录制分享软件，基于文本的录屏工具，对终端输入输出进行捕捉， 然后以文本的形式来记录和回放！这使其拥有非常炫酷的特性：在 播放 过程中你随时可以暂停， 然后对“播放器”中的文本进行复制或者其它操作！实际效果可以点击下方的播放按钮查看。支持各个操作系统（哦。。没有windows）
+            <div class="post-title"><a th:href="${'/post/' + post.uri}" th:text="${post.title}">教你使用asciinema录制命令行操作</a></div>
+            <div class="post-content" th:text="${#strings.substring(post.content, 0, #strings.length(post.content) > 200 ? 200 : #strings.length(post.content))}">
             </div>
             <ul class="post-tags">
-                <li>asclinema</li>
-                <li>terminal</li>
-            </ul>
-        </li>
-        <li class="post">
-            <div class="post-meta">
-                <span style="color: #757575">2017-08-07</span>
-                &nbsp;&nbsp;·&nbsp;&nbsp;
-                <span style="color: #ba68c8">linux</span>
-            </div>
-            <div class="post-title"><a>SSH免密登录是怎么玩儿的?</a></div>
-            <div class="post-content">
-                作为一名后端开发，经常会遇到SSH登录，Git提交等事务，而当你有很多服务器的时候使用密码可能不是一个好的选择了， 就像我要登录自己的服务器、公司各个环境的服务器，虽然有工具可以帮我们做这些，但我习惯在命令行下操作。 下面我带你了解一下免密登录的原理和如何实现。
-            </div>
-            <ul class="post-tags">
-                <li>github</li>
-                <li>mac</li>
-                <li>ssh</li>
-            </ul>
-        </li>
-        <li class="post">
-            <div class="post-meta">
-                <span style="color: #757575">2017-08-08</span>
-                &nbsp;&nbsp;·&nbsp;&nbsp;
-                <span style="color: #ba68c8">linux</span>
-            </div>
-            <div class="post-title"><a>教你使用asciinema录制命令行操作</a></div>
-            <div class="post-content">
-                asciinema 是一个在终端下非常棒的录制分享软件，基于文本的录屏工具，对终端输入输出进行捕捉， 然后以文本的形式来记录和回放！这使其拥有非常炫酷的特性：在 播放 过程中你随时可以暂停， 然后对“播放器”中的文本进行复制或者其它操作！实际效果可以点击下方的播放按钮查看。支持各个操作系统（哦。。没有windows）
-            </div>
-            <ul class="post-tags">
-                <li>asclinema</li>
-                <li>terminal</li>
-            </ul>
-        </li>
-        <li class="post">
-            <div class="post-meta">
-                <span style="color: #757575">2017-08-07</span>
-                &nbsp;&nbsp;·&nbsp;&nbsp;
-                <span style="color: #ba68c8">linux</span>
-            </div>
-            <div class="post-title"><a>SSH免密登录是怎么玩儿的?</a></div>
-            <div class="post-content">
-                作为一名后端开发，经常会遇到SSH登录，Git提交等事务，而当你有很多服务器的时候使用密码可能不是一个好的选择了， 就像我要登录自己的服务器、公司各个环境的服务器，虽然有工具可以帮我们做这些，但我习惯在命令行下操作。 下面我带你了解一下免密登录的原理和如何实现。
-            </div>
-            <ul class="post-tags">
-                <li>github</li>
-                <li>mac</li>
-                <li>ssh</li>
-            </ul>
-        </li>
-        <li class="post">
-            <div class="post-meta">
-                <span style="color: #757575">2017-08-08</span>
-                &nbsp;&nbsp;·&nbsp;&nbsp;
-                <span style="color: #ba68c8">linux</span>
-            </div>
-            <div class="post-title"><a>教你使用asciinema录制命令行操作</a></div>
-            <div class="post-content">
-                asciinema 是一个在终端下非常棒的录制分享软件，基于文本的录屏工具，对终端输入输出进行捕捉， 然后以文本的形式来记录和回放！这使其拥有非常炫酷的特性：在 播放 过程中你随时可以暂停， 然后对“播放器”中的文本进行复制或者其它操作！实际效果可以点击下方的播放按钮查看。支持各个操作系统（哦。。没有windows）
-            </div>
-            <ul class="post-tags">
-                <li>asclinema</li>
-                <li>terminal</li>
-            </ul>
-        </li>
-        <li class="post">
-            <div class="post-meta">
-                <span style="color: #757575">2017-08-07</span>
-                &nbsp;&nbsp;·&nbsp;&nbsp;
-                <span style="color: #ba68c8">linux</span>
-            </div>
-            <div class="post-title"><a>SSH免密登录是怎么玩儿的?</a></div>
-            <div class="post-content">
-                作为一名后端开发，经常会遇到SSH登录，Git提交等事务，而当你有很多服务器的时候使用密码可能不是一个好的选择了， 就像我要登录自己的服务器、公司各个环境的服务器，虽然有工具可以帮我们做这些，但我习惯在命令行下操作。 下面我带你了解一下免密登录的原理和如何实现。
-            </div>
-            <ul class="post-tags">
-                <li>github</li>
-                <li>mac</li>
-                <li>ssh</li>
-            </ul>
-        </li>
-        <li class="post">
-            <div class="post-meta">
-                <span style="color: #757575">2017-08-08</span>
-                &nbsp;&nbsp;·&nbsp;&nbsp;
-                <span style="color: #ba68c8">linux</span>
-            </div>
-            <div class="post-title"><a>教你使用asciinema录制命令行操作</a></div>
-            <div class="post-content">
-                asciinema 是一个在终端下非常棒的录制分享软件，基于文本的录屏工具，对终端输入输出进行捕捉， 然后以文本的形式来记录和回放！这使其拥有非常炫酷的特性：在 播放 过程中你随时可以暂停， 然后对“播放器”中的文本进行复制或者其它操作！实际效果可以点击下方的播放按钮查看。支持各个操作系统（哦。。没有windows）
-            </div>
-            <ul class="post-tags">
-                <li>asclinema</li>
-                <li>terminal</li>
-            </ul>
-        </li>
-        <li class="post">
-            <div class="post-meta">
-                <span style="color: #757575">2017-08-07</span>
-                &nbsp;&nbsp;·&nbsp;&nbsp;
-                <span style="color: #ba68c8">linux</span>
-            </div>
-            <div class="post-title"><a>SSH免密登录是怎么玩儿的?</a></div>
-            <div class="post-content">
-                作为一名后端开发，经常会遇到SSH登录，Git提交等事务，而当你有很多服务器的时候使用密码可能不是一个好的选择了， 就像我要登录自己的服务器、公司各个环境的服务器，虽然有工具可以帮我们做这些，但我习惯在命令行下操作。 下面我带你了解一下免密登录的原理和如何实现。
-            </div>
-            <ul class="post-tags">
-                <li>github</li>
-                <li>mac</li>
-                <li>ssh</li>
-            </ul>
-        </li>
-        <li class="post">
-            <div class="post-meta">
-                <span style="color: #757575">2017-08-08</span>
-                &nbsp;&nbsp;·&nbsp;&nbsp;
-                <span style="color: #ba68c8">linux</span>
-            </div>
-            <div class="post-title"><a>教你使用asciinema录制命令行操作</a></div>
-            <div class="post-content">
-                asciinema 是一个在终端下非常棒的录制分享软件，基于文本的录屏工具，对终端输入输出进行捕捉， 然后以文本的形式来记录和回放！这使其拥有非常炫酷的特性：在 播放 过程中你随时可以暂停， 然后对“播放器”中的文本进行复制或者其它操作！实际效果可以点击下方的播放按钮查看。支持各个操作系统（哦。。没有windows）
-            </div>
-            <ul class="post-tags">
-                <li>asclinema</li>
-                <li>terminal</li>
-            </ul>
-        </li>
-        <li class="post">
-            <div class="post-meta">
-                <span style="color: #757575">2017-08-07</span>
-                &nbsp;&nbsp;·&nbsp;&nbsp;
-                <span style="color: #ba68c8">linux</span>
-            </div>
-            <div class="post-title"><a>SSH免密登录是怎么玩儿的?</a></div>
-            <div class="post-content">
-                作为一名后端开发，经常会遇到SSH登录，Git提交等事务，而当你有很多服务器的时候使用密码可能不是一个好的选择了， 就像我要登录自己的服务器、公司各个环境的服务器，虽然有工具可以帮我们做这些，但我习惯在命令行下操作。 下面我带你了解一下免密登录的原理和如何实现。
-            </div>
-            <ul class="post-tags">
-                <li>github</li>
-                <li>mac</li>
-                <li>ssh</li>
+                <li th:each="tag : ${#strings.arraySplit(post.tags, ',')}" th:text="${tag}"></li>
             </ul>
         </li>
     </ul>
-    <!--<div class="page-btns">-->
-        <!--<div class="page-btn active">1</div>-->
-        <!--<div class="page-btn">2</div>-->
-        <!--<div class="page-btn next-btn">下一页</div>-->
-    <!--</div>-->
+    <div class="page-btns">
+        <a class="page-btn next-btn" th:if="${currentPage != 0}" th:href="${'/?page=' + (currentPage - 1)}">上一页</a>
+        <a th:each="number, iterStat : ${#numbers.sequence(0, page.totalPages)}" th:text="${number}" th:class="${iterStat.index == currentPage ? 'page-btn active' : 'page-btn'}" th:href="${'/?page=' + iterStat.index}"></a>
+        <a class="page-btn next-btn" th:if="${currentPage + 1 != page.totalPages}" th:href="${'/?page=' + (currentPage + 1)}">下一页</a>
+    </div>
 </div>
 <div layout:fragment="customScript">
     <script>
